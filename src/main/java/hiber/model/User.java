@@ -2,12 +2,13 @@ package hiber.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "Users")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,6 +16,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
@@ -26,6 +28,10 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id")
+    private Car car;
+
 
     public User (String firstName, String lastName, String email) {
         this.firstName = firstName;
@@ -33,5 +39,19 @@ public class User {
         this.email = email;
     }
 
-
+    @Override
+    public String toString () {
+        return car != null ? "id=" + id +
+                "\nfirstName='" + firstName + '\'' +
+                "\nlastName='" + lastName + '\'' +
+                "\nemail='" + email + '\'' +
+                "\ncar=" + car +
+                "\n\n" :
+                "id=" + id +
+                        "\nfirstName='" + firstName + '\'' +
+                        "\nlastName='" + lastName + '\'' +
+                        "\nemail='" + email + '\'' +
+                        "\nNO Car" +
+                        "\n\n";
+    }
 }
