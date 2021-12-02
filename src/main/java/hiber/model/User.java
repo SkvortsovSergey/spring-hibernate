@@ -2,8 +2,8 @@ package hiber.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 
@@ -28,8 +28,11 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "car_id")
+
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "car_id")
+
+    @Embedded
     private Car car;
 
 
