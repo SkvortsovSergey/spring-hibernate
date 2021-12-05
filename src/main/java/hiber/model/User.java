@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
@@ -29,10 +31,8 @@ public class User {
     private String email;
 
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "car_id")
-
-    @Embedded
+    @OneToOne
+    @JoinTable(name = "car")
     private Car car;
 
 
@@ -40,6 +40,14 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    public User (String firstName, String lastName, String email, Car car) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.car = car;
+
     }
 
     @Override

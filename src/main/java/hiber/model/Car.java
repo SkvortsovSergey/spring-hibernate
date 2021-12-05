@@ -1,31 +1,33 @@
 package hiber.model;
 
 import lombok.*;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
-//@Entity
+@Entity
 @Table(name = "Car")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
-@Embeddable
 public class Car {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    long id;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
+    private long id;
+
+    @Column()
     private String model;
 
-    @Column
+    @Column()
+
     private int series;
 
-//    public Car (String model, int series) {
-//        this.model = model;
-//        this.series = series;
-//    }
+    public Car (String model, int series) {
+        this.model = model;
+        this.series = series;
+    }
 }
