@@ -32,7 +32,7 @@ public class User {
 
 
     @OneToOne
-    @JoinTable(name = "car")
+    @JoinColumn(name = "car_Id")
     private Car car;
 
 
