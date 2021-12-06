@@ -1,8 +1,6 @@
 package hiber.model;
 
 import lombok.*;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
@@ -16,14 +14,13 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column()
     private long id;
 
     @Column()
     private String model;
 
     @Column()
-
     private int series;
 
     public Car (String model, int series) {

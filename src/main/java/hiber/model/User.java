@@ -3,9 +3,6 @@ package hiber.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
@@ -30,24 +27,14 @@ public class User {
     @Column(name = "email")
     private String email;
 
-
     @OneToOne
     @JoinColumn(name = "car_Id")
     private Car car;
-
 
     public User (String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-    }
-
-    public User (String firstName, String lastName, String email, Car car) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.car = car;
-
     }
 
     @Override
